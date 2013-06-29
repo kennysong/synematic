@@ -1,8 +1,8 @@
-synematic
+Synematic
 =========
 
-Meteor Hackathon 2013 Project
+http://synematic.meteor.com
 
-Kenny Song
-Joshua Angelucci
-Amey Desai
+#####Meteor Hackathon 2013 Project
+
+Kenny Song, Joshua Angelucci, Amey Desai
