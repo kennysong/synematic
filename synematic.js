@@ -10,6 +10,14 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
+
+  Template.video.rendered = function () {
+      jwplayer('my-video').setup({
+            file: 'https://s3-us-west-2.amazonaws.com/tinymovieroom/CHLv53tSDeXPavhuCAXH_Daft+Punk+-+Get+Lucky+__+George+Barnett+cover.mp4',
+            width: '640',
+            height: '360'
+          });
+  };
 }
 
 if (Meteor.isServer) {
