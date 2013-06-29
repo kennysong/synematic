@@ -1,1 +1,9 @@
 /* CSS declarations go here */
+
+.logo {
+	font-family: 'Lily Script One', cursive;
+	font-size: 55px;
+	font-weight: 100;
+	text-shadow: 1px 1px 1px gray;
+	display: block;
+}
