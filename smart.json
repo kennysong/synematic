@@ -1,7 +1,6 @@
 {
   "packages": {
     "videojs": {},
-    "router": {},
-    "observatory": {}
+    "router": {}
   }
 }
