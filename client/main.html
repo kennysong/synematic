@@ -8,31 +8,15 @@
 <body>
   <div id="wrapper">
 
-    <span class="logo">Synematic <i class="icon-ticket" id="logoicon"></i></span>
+    <a id="logolink" href="/"><span class="logo">Synematic <i class="icon-ticket" id="logoicon"></i></span></a>
 
-    <div id="nav"><a href="/about">About</a></div>
+    <div id="nav">
+      <a href="/faq">FAQ</a>
+      &middot;
+      <a href="/about">About</a>
+    </div>
 
     {{ renderPage }}
-
-    <div class="row-fluid steps">
-      <div id="stepone" class="step span4">
-        <div id="one">①</div>
-        <div class="steptext">Create a virtual room</div>
-        <i class="icon-comments" style="color: rgb(50, 79, 231);font-size: 120px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-      </div>
-      <div id="steptwo" class="step span4">
-        <div id="two">②</div>
-        <div class="steptext">Upload a movie file</div>
-        <i class="icon-film" style="color:rgb(10, 175, 10);font-size: 100px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-      </div>
-      <div id="stepthree" class="step span4">
-        <div id="three">③</div>
-        <div class="steptext">Watch it with friends!</div>
-        <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;left: 10px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-        <i class="icon-user" style="color:  rgb(221, 82, 48);;position: relative;top: 20px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-        <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;right: 10px;font-size:86px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-      </div>
-    </div>
 
   </div>
 </body>
@@ -41,18 +25,54 @@
 
 <template name="home">
   <center>
-    <form id="create" class="form-inline" style="display:inline-block">
+    <span id="create" style="display:inline-block;position:relative;left: 243px;">
       <div style="display:inline-block">
       <input type="text" id="nameroom" class="textinput" placeholder="Name your room">
-      <button type="submit" class="btn btn-warning create" style="font-family:
-      'PT Sans'">Create Room!</button>
+      <input type="button" id="submitroom" class="btn btn-warning create" style="font-family:
+      'Pontano Sans';font-size:16px;" value="Create Room!"></input>
     </div>
-    </form>
+    </span>
+
+    <span id="uploading" style="display:inline-block;position:relative;left:350px;top: 42px;visibility:hidden;opacity:0">
+      <button id="attachment" class='btn btn-info'>Upload&nbsp;&nbsp;<i class="icon-cloud-upload"></i></button>
+      <div id="uploadnotif" style="font-family:'PT Sans';margin-top:10px;visibility:hidden"><a id="afterupload" href="#">Continue &rarr;</a></div>
+    </span>
+
+    <span id="share" style="display:inline-block;position:relative;left:350px;top: 67px;visibility:hidden;opacity:0">
+      <div style="font-family:'Pontano Sans';margin-bottom:35px;font-size:18px;">You're set! Share this link with your friends :)</div>
+      <input type="text" id="url" class="textinput" value="http://google.com" style="font-family:Pontano Sans;width: 370px;">
+      <div style="font-family:'Pontano Sans';margin-top:35px;color:gray;">This room and file will be deleted in 24 hours.</div>
+    </span>
+
   </center>
+
+ <div class="row-fluid steps">
+  <div id="stepone" class="step span4" style="position:relative">
+    <div id="one">①</div>
+    <div class="steptext">Create a virtual room</div>
+    <div style="position:absolute;font-size:12px;color:gray;top: 135px;left: 80px;">You'll get a private URL to share</div>
+    <i class="icon-comments" style="color: rgb(50, 79, 231);font-size: 120px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+  </div>
+  <div id="steptwo" class="step span4" style="position:relative">
+    <div id="two">②</div>
+    <div class="steptext">Upload a movie file</div>
+    <div style="position:absolute;font-size:12px;color:gray;top: 129px;left: 90px;">Max file size: 2GB </br> Best Format: .mp4 (h.264)</div>
+    <i class="icon-film" style="color:rgb(10, 175, 10);font-size: 100px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);position:relative;top:10px;"></i>
+  </div>
+  <div id="stepthree" class="step span4" style="position:relative">
+  <div id="three">③</div>
+  <div class="steptext">Watch it with friends!</div>
+  <div style="position:absolute;font-size:12px;color:gray;top: 130px;left: 73px;">Play, pause, skip around together <br/> Talk in a group video chat</div>
+  <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;left: 10px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+  <i class="icon-user" style="color:  rgb(221, 82, 48);;position: relative;top: 30px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+  <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;right: 10px;font-size:86px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+  </div>
+</div>
+
 </template>
 
 <template name="about">
-  Built in 24 hours by Kenny Song, Joshua Angelucci, and Amey Desai.
+  <div>Built in 24 hours by Kenny Song, Joshua Angelucci, and Amey Desai.</div>
 </template>
 
 <template name="room">
@@ -65,10 +85,6 @@
 
 <!-- Templates for Snippets -->
 
-<template name="upload">
-  Upload your video file:
-  <input type="button" id="attachment" value="Upload">
-</template>
 
 <template name="video">
   <video id="example_video_1" class="video-js vjs-default-skin"

@@ -2,7 +2,7 @@
 
 body {
 	color: #333;
-
+ 	background:url('/brushed_alu.png');
 }
 
 .logo {
@@ -11,8 +11,9 @@ body {
 	font-weight: 100;
 	text-shadow: 1px 1px 1px gray;
 	display: block;
-	margin-bottom: 80px;
+	margin-bottom: -15px;
 	margin-top: 13px;
+	color:black;
 }
 
 .step {
@@ -37,7 +38,7 @@ body {
 	font-size: 16px;
 }
 
-.create {
+.btn {
 	height:40px;
 	border-radius:2px;
 }
@@ -54,15 +55,17 @@ body {
 #create {
 	margin-top: 15px;
 	margin-bottom:65px;
-	font-family: PT Sans;
-font-size: 16px;
+	font-family: 'Pontano Sans';
+	font-size: 16px;
 }
 
 #nav {
 	position: absolute;
-	top: 50px;
-	right: 50px;
-	font-size: 14px;
+	top: 40px;
+	right: 20px;
+	font-family: 'PT Sans';
+	color: gray;
+	font-size: 16px;
 }
 
 .steptext #nav{
@@ -70,12 +73,11 @@ font-size: 16px;
 }
 
 .stepactive {
-	box-shadow: 0px 3px 15px black;
+	box-shadow: 0px 0px 20px black;
 }
 
 a {
-	font-family: 'PT Sans';
-	color: gray;
+	color:gray;
 }
 
 a:hover{
@@ -85,4 +87,14 @@ a:hover{
 
 .steps {
 	margin-top: 50px;
+	font-family: 'PT Sans';
+}
+
+#nameroom {
+	font-family: 'Pontano Sans';
+	font-size:16px;
+}
+
+#logolink:hover {
+	color:inherit;
 }
