@@ -159,6 +159,24 @@ if (Meteor.isClient) {
       $('#stepone').removeClass('stepactive')
     }
   })
+    Template.video.rendered=function() {
+
+       myPlayer = videojs("example_video_1");
+     
+  
+   var playEvent = function() {
+       Meteor.http.post("meteor-synematic.appspot.com/update?pause=0")
+       
+   };
+
+   var pauseEvent = function() {
+       Meteor.http.post("meteor-synematic.appspot.com/update?pause=1")
+   };
+
+   myPlayer.on("play", playEvent);
+   myPlayer.on("pause", pauseEvent);
+ };
+
 
 }
 
