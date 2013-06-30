@@ -5,8 +5,6 @@
 
 <body>
   <span class="logo">Synematic</span>
-
-
   {{> content }}
   {{> upload }}
  
@@ -24,13 +22,18 @@
   {{renderPage layoutName}}
 </template>
 
-<template name="roomLayout">
+<template name="homeLayout">
   <h1> Enter Room Name </h1>
   {{renderPage}}
 </template>
 
-<template name="roomPage">
-  <input type="text" id="room" />
+<template name="aboutLayout">
+  <div>About alsdjglkasd</div>
+  {{renderPage}}
+</template>
+
+<template name="home">
+  <input type="text" id="roomNumber" />
   </br>
 </template>
 
