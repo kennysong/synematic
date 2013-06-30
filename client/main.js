@@ -4,6 +4,7 @@ var ROOM_URL = "http://synematic.meteor.com/room/";
 if (Meteor.isClient) {
   Meteor.startup(function () {
     filepicker.setKey("AKVPKuZJ1SmuwsACRbbLJz");
+    Rooms.insert({id: Session.get('roomId'), paused: 1, time: 0});
   }); 
 
   // Template.hello.greeting = function () {
@@ -72,3 +73,33 @@ if (Meteor.isServer) {
 
   });
 }
+
+
+// Template.video.rendered = function () {
+//   myPlayer = videojs("example_video_1");
+//   temp = Rooms.find({id: Session.get('roomId')})
+
+//   var playEvent = function() {
+//     // Rooms.update(, {$set: {"paused": 0}})
+//     // console.log("play")
+//   };
+
+//   var pauseEvent = function() {
+//     // Rooms.update(this._id, {$set: {"paused": 1}})
+//     // console.log("pause")
+//   };
+
+//   myPlayer.on("play", playEvent);
+//   myPlayer.on("pause", pauseEvent);
+// };
+
+// Deps.autorun(function () {
+//   temp = Rooms.find({id: Session.get('roomId')})
+//   temp.forEach(function(doc) {
+//     if (doc.paused) {
+//       myPlayer.pause();
+//     } else {
+//       myPlayer.play();
+//     }
+//   });
+// });
