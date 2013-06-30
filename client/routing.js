@@ -3,6 +3,7 @@ if (Meteor.isClient) {
     {
       '/' : 'home',
       '/about' : 'about',
+      '/faq' : 'faq',
       '/room/:id' : function(id) {
           Session.set('roomId', id);
           return 'room'; 
