@@ -2,15 +2,9 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "videojs": {},
       "router": {}
     },
     "packages": {
-      "videojs": {
-        "git": "https://github.com/nate-strauser/meteor-video-js.git",
-        "tag": "v0.1.0",
-        "commit": "ff4c19f2a804be62c4e93fb42eef320368d3c6fe"
-      },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
         "tag": "v0.5.1",
