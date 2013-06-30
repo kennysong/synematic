@@ -1,4 +1,3 @@
-
 if (Meteor.isClient) {
   Meteor.Router.add({
     '/': 'roomPage',
