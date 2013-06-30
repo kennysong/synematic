@@ -4,9 +4,12 @@
 </head>
 
 <body>
-  {{> hello}}
-  {{> video}}
-  {{> body }}
+  <span class="logo">Synematic</span>
+
+
+  {{> content }}
+  {{> upload }}
+ 
 </body>
 
 <template name="video">
@@ -17,17 +20,7 @@
   </video>
 </template>
 
-<template name="hello">
-
-  <span class="logo">Synematic</span>
-
-  {{greeting}}
-  <input id="button" type="button" value="Click" />
-
-  <input type="button" id="attachment" value="Upload">
-</template>
-
-<template name ="body">
+<template name ="content">
   {{renderPage layoutName}}
 </template>
 
@@ -35,20 +28,13 @@
   <h1> Enter Room Name </h1>
   {{renderPage}}
 </template>
-<template name="uploadLayout">
-  <h1>Upload Movie </h1>
-  {{renderPage}}
-
-</template>
 
 <template name="roomPage">
   <input type="text" id="room" />
   </br>
 </template>
 
-
-<template name="uploadPage">
-Upload your movie:
-</br>
-<input type="filepicker" id="attachment">   
+<template name="upload">
+  Upload your video file:
+  <input type="button" id="attachment" value="Upload">
 </template>

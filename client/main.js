@@ -6,9 +6,9 @@ if (Meteor.isClient) {
     filepicker.setKey("AKVPKuZJ1SmuwsACRbbLJz");
   }); 
 
-  Template.hello.greeting = function () {
-    return "Welcome to synematic.";
-  };
+  // Template.hello.greeting = function () {
+  //   return "Welcome to synematic.";
+  // };
 
   Template.hello.events({
     'click #button' : function () {
