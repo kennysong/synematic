@@ -28,7 +28,7 @@ if (Meteor.isClient) {
     roomId: function() {return Session.get('roomId'); }
   });
 
-  Template.room.created = function () {
+  Template.chat.created = function () {
     // Initialize API key, session, and token...
     // Think of a session as a room, and a token as the key to get in to the room
     // Sessions and tokens are generated on your server and passed down to the client
