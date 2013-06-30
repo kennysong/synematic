@@ -1,18 +1,54 @@
 <head>
   <title>synematic</title>
   <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|Pontano+Sans' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <span class="logo">Synematic</span>
-  {{ renderPage }}
+  <div id="wrapper">
+
+    <span class="logo">Synematic <i class="icon-ticket" id="logoicon"></i></span>
+
+    <div id="nav"><a href="/about">About</a></div>
+
+    {{ renderPage }}
+
+    <div class="row-fluid steps">
+      <div id="stepone" class="step span4">
+        <div id="one">①</div>
+        <div class="steptext">Create a virtual room</div>
+        <i class="icon-comments" style="color: rgb(50, 79, 231);font-size: 120px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+      </div>
+      <div id="steptwo" class="step span4">
+        <div id="two">②</div>
+        <div class="steptext">Upload a movie file</div>
+        <i class="icon-film" style="color:rgb(10, 175, 10);font-size: 100px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+      </div>
+      <div id="stepthree" class="step span4">
+        <div id="three">③</div>
+        <div class="steptext">Watch it with friends!</div>
+        <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;left: 10px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+        <i class="icon-user" style="color:  rgb(221, 82, 48);;position: relative;top: 20px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+        <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;right: 10px;font-size:86px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 <!-- Templates for Pages -->
 
 <template name="home">
-  Enter Room Name:
-  <input type="text" id="roomNumber" />
+  <center>
+    <form id="create" class="form-inline" style="display:inline-block">
+      <div style="display:inline-block">
+      <input type="text" id="nameroom" class="textinput" placeholder="Name your room">
+      <button type="submit" class="btn btn-warning create" style="font-family:
+      'PT Sans'">Create Room!</button>
+    </div>
+    </form>
+  </center>
 </template>
 
 <template name="about">

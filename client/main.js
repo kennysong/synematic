@@ -27,6 +27,17 @@ if (Meteor.isClient) {
     roomId: function() {return Session.get('roomId'); }
   }); 
 
+  Template.home.events({
+    'focus #nameroom':function() {
+      if (!$('#stepone').hasClass('stepactive')){
+        $('#stepone').addClass('stepactive')
+      }
+    },
+    'blur #nameroom': function() {
+      $('#stepone').removeClass('stepactive')
+    }
+  })
+
 }
 
 if (Meteor.isServer) {

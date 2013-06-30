@@ -1,9 +1,88 @@
 /* CSS declarations go here */
 
+body {
+	color: #333;
+
+}
+
 .logo {
 	font-family: 'Lily Script One', cursive;
 	font-size: 55px;
 	font-weight: 100;
 	text-shadow: 1px 1px 1px gray;
 	display: block;
+	margin-bottom: 80px;
+	margin-top: 13px;
+}
+
+.step {
+	font-size: 70px;
+	text-align: center;
+	border: 1px rgb(185, 185, 185) dashed;
+	height:300px;
+}
+
+
+#wrapper{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.textinput {
+	height: 30px;
+	border-radius: 2px;
+	width: 135px;
+	font-size: 16px;
+}
+
+.create {
+	height:40px;
+	border-radius:2px;
+}
+
+#logoicon {
+	color: rgb(156, 7, 7);
+}
+
+.steptext {
+	font-size: 25px;
+	margin-bottom: 35px;
+}
+
+#create {
+	margin-top: 15px;
+	margin-bottom:65px;
+	font-family: PT Sans;
+font-size: 16px;
+}
+
+#nav {
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	font-size: 14px;
+}
+
+.steptext #nav{
+	font-family: 'PT Sans';
+}
+
+.stepactive {
+	box-shadow: 0px 3px 15px black;
+}
+
+a {
+	font-family: 'PT Sans';
+	color: gray;
+}
+
+a:hover{
+	color:black;
+	text-decoration: none;
+}
+
+.steps {
+	margin-top: 50px;
 }
