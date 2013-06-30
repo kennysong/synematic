@@ -3,8 +3,8 @@ if (Meteor.isClient) {
     '/': 'home',
     '/about' : 'about',
     '/room/:id' : function(id) {
-        alert(id)
-        return 'room'
+        Session.set('roomId', id);
+        return 'room';
     }
 
   })

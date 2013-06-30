@@ -10,16 +10,9 @@ if (Meteor.isClient) {
   //   return "Welcome to synematic.";
   // };
 
-  Template.hello.events({
-    'click #button' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
 
   // upload handler
-  Template.hello.events({
+  Template.upload.events({
     'click #attachment' : function () {
       filepicker.pickAndStore({},
           {location:"S3"}, function(InkBlobs){
@@ -29,6 +22,11 @@ if (Meteor.isClient) {
       });
     }
   });
+
+  Template.room.helpers({
+    roomId: function() {return Session.get('roomId'); }
+  }); 
+
 }
 
 if (Meteor.isServer) {
