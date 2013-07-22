@@ -22,7 +22,7 @@
   </div>
 </body>
 
-<!-- Templates for Pages -->
+<!-- Templates for renderPage -->
 
 <template name="home">
   <center>
@@ -44,73 +44,43 @@
       <input type="text" id="url" class="textinput" value="http://google.com" style="font-family:Pontano Sans;width: 370px;">
       <div style="font-family:'Pontano Sans';margin-top:35px;color:gray;">This room and file will be deleted in 24 hours.</div>
     </span>
-
   </center>
 
- <div class="row-fluid steps">
-  <div id="stepone" class="step span4" style="position:relative">
-    <div id="one">①</div>
-    <div class="steptext">Create a virtual room</div>
-    <div style="position:absolute;font-size:12px;color:gray;top: 135px;left: 80px;">You'll get a private URL to share</div>
-    <i class="icon-comments" style="color: rgb(50, 79, 231);font-size: 120px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-  </div>
-  <div id="steptwo" class="step span4" style="position:relative">
-    <div id="two">②</div>
-    <div class="steptext">Upload a movie file</div>
-    <div style="position:absolute;font-size:12px;color:gray;top: 129px;left: 90px;">Max file size: 2GB </br> Best Format: .mp4 (h.264)</div>
-    <i class="icon-film" style="color:rgb(10, 175, 10);font-size: 100px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);position:relative;top:10px;"></i>
-  </div>
-  <div id="stepthree" class="step span4" style="position:relative">
-  <div id="three">③</div>
-  <div class="steptext">Watch it with friends!</div>
-  <div style="position:absolute;font-size:12px;color:gray;top: 130px;left: 73px;">Play, pause, skip around together <br/> Talk in a group video chat</div>
-  <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;left: 10px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-  <i class="icon-user" style="color:  rgb(221, 82, 48);;position: relative;top: 30px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-  <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;right: 10px;font-size:86px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
-  </div>
-</div>
-
-</template>
-
-<template name="about">
-  <div id="stepthree" style="position:relative">
-    <div class="steptext">Built in 24 hours by Kenny Song, Joshua Angelucci, and Amey Desai.</div> 
+  <div class="row-fluid steps">
+    <div id="stepone" class="step span4" style="position:relative">
+      <div id="one">①</div>
+      <div class="steptext">Create a virtual room</div>
+      <div style="position:absolute;font-size:12px;color:gray;top: 135px;left: 80px;">You'll get a private URL to share</div>
+      <i class="icon-comments" style="color: rgb(50, 79, 231);font-size: 120px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+    </div>
+    <div id="steptwo" class="step span4" style="position:relative">
+      <div id="two">②</div>
+      <div class="steptext">Upload a movie file</div>
+      <div style="position:absolute;font-size:12px;color:gray;top: 129px;left: 90px;">Max file size: 2GB </br> Best Format: .mp4 (h.264)</div>
+      <i class="icon-film" style="color:rgb(10, 175, 10);font-size: 100px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);position:relative;top:10px;"></i>
+    </div>
+    <div id="stepthree" class="step span4" style="position:relative">
+    <div id="three">③</div>
+    <div class="steptext">Watch it with friends!</div>
+    <div style="position:absolute;font-size:12px;color:gray;top: 130px;left: 73px;">Play, pause, skip around together <br/> Talk in a group video chat</div>
+    <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;left: 10px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+    <i class="icon-user" style="color:  rgb(221, 82, 48);;position: relative;top: 30px;font-size:86px;  text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+    <i class="icon-user" style="color: rgb(235, 158, 16);position: relative;top:10px;right: 10px;font-size:86px; text-shadow: 1px 1px 1px rgb(170, 170, 170);"></i>
+    </div>
   </div>
 </template>
 
 <template name="room">
-  {{roomId}}
+  {{room_id}}
   {{> video}}
-  {{> chat}}
 </template>
 
-<template name="error">
-  Page not found.
-</template>
-
-<template name="faq">
-  <div id="stepone" style="position:relative;top: 30px">
-    <div style="position:absolute;font-size:24px;top: 10px;left: 73px;">Q1. Create a virtual room</div>
-    <div style="position:absolute;font-size:24px;top: 40px;left: 73px;">A1. All the answers are belong to us.</div>
-    <div style="position:absolute;font-size:24px;top: 90px;left: 73px;">Q2. Create a virtual room</div>
-    <div style="position:absolute;font-size:24px;top: 120px;left: 73px;">A2. All the answers are belong to us.</div>
-    <div style="position:absolute;font-size:24px;top: 170px;left: 73px;">Q3. Create a virtual room</div>
-    <div style="position:absolute;font-size:24px;top: 200px;left: 73px;">A3. All the answers are belong to us.</div>
-  
-  </div>
-</template>
-
-<!-- Templates for Snippets -->
-
+<!-- Snippet Templates -->
 
 <template name="video">
-  <video id="example_video_1" class="video-js vjs-default-skin"
+  <video id="room_video" class="video-js vjs-default-skin"
     controls preload="auto" width="640" height="264"
     data-setup='{"example_option":true}'>
    <source src="https://s3-us-west-2.amazonaws.com/tinymovieroom/CHLv53tSDeXPavhuCAXH_Daft+Punk+-+Get+Lucky+__+George+Barnett+cover.mp4" type='video/mp4' />
   </video>
-
-</template>
-
-<template name="chat">
 </template>
