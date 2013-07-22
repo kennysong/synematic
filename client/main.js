@@ -65,7 +65,8 @@ Template.room.helpers({
 });
 
 Template.video.rendered = function() {
-  projekktor('#player_a');       
+  projekktor('#room_video');       
+  var player = projekktor('room_video')
 
   var room_id = Session.get('room_id');
   var last_sync_time = 0.0;
@@ -82,13 +83,11 @@ Template.video.rendered = function() {
   var playEvent = function() {
     console.log('play')
     var room = Rooms.findOne({'room_id':Session.get('room_id')});
-    Rooms.update(room._id,{$set:{"paused":0}});      
   };
 
   var pauseEvent = function() {
     console.log('pause')
     var room = Rooms.findOne({'room_id':Session.get('room_id')});
-    Rooms.update(room._id,{$set:{'paused':1}});
   };
 
   // var timeupdateEvent = function () {
@@ -109,38 +108,40 @@ Template.video.rendered = function() {
 
   // };
 
-   projekktor('player_a').addListener('state', function(data) { 
-      if (data == 'PAUSED') {
-          console.log('paused')
-      } else if (data == 'PLAYING') {
-          console.log('playing')
-      }
-    });
+  function stateEvent(data) {
+    var room = Rooms.findOne({'room_id':Session.get('room_id')});
 
-  projekktor('player_a').addListener('seek', function(data) {
-      if (data == 'SEEKED') {
-          console.log(projekktor('player_a').getPosition())
-      }
-  });
+    if (data == 'PAUSED') {
+      console.log('pause')
+      Rooms.update(room._id,{$set:{"paused":1}});    
+    } else if (data == 'PLAYING') {
+      console.log('play')
+      Rooms.update(room._id,{$set:{'paused':0}});
+    }
+  }
 
-  // myPlayer.on("play", playEvent);
-  // myPlayer.on("pause", pauseEvent);
-  // myPlayer.on("timeupdate", timeupdateEvent);
+  function seekEvent(data) {
+    if (data == 'SEEKED') {
+      console.log(player.getPosition())
+    }
+  }
+
+  player.addListener('state', stateEvent);
+  player.addListener('seek', seekEvent);
 
   Deps.autorun(function() {
     console.log('aaaa')
     var room = Rooms.findOne({'room_id':Session.get('room_id')});
+    console.log(room)
     if (room) {
       // play/pause syncing
-      // if (myPlayer.paused() && !room.paused) {
-      //   console.log('sync played')
-      //   myPlayer.play();
-      //   console.log('sync played')
-      // } else if (!myPlayer.paused() && room.paused) {
-      //   console.log('sync paused')
-      //   myPlayer.pause();
-      //   console.log('sync paused')
-      // }
+      if ((player.getState("PAUSED") || player.getState("IDLE"))&& !room.paused) {
+        player.setPlay();
+        console.log('sync played');
+      } else if (player.getState("PLAYING")  && room.paused) {
+        player.setPause();
+        console.log('sync paused');
+      }
 
       // time syncing
       // if (last_sync_time != room['time']) {
