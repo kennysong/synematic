@@ -65,9 +65,10 @@ Template.room.helpers({
 });
 
 Template.video.rendered = function() {
-  myPlayer = videojs("room_video");  
+  projekktor('#player_a');       
 
   var room_id = Session.get('room_id');
+  var last_sync_time = 0.0;
   Meteor.subscribe('rooms', room_id)
 
   Meteor.call("get_room", room_id, function(error, room) {
@@ -77,7 +78,6 @@ Template.video.rendered = function() {
       Session.set('mongo_id', room['_id'])
     }
   });
-
 
   var playEvent = function() {
     console.log('play')
@@ -91,37 +91,62 @@ Template.video.rendered = function() {
     Rooms.update(room._id,{$set:{'paused':1}});
   };
 
-  var timeupdateEvent = function () {
-    console.log('timeupdate')
-    // check if seeked locally    
-    var prev_time = Session.get('prev_time')
-    var current_time = myPlayer.currentTime()
-    console.log(Math.abs(prev_time - current_time))
-    // if (Math.abs(prev_time - current_time) > 1.0) {
-    //   // update database
-    //   console.log('seek')
-    //   var room = Rooms.findOne({'room_id':Session.get('room_id')});
-    //   Rooms.update(room._id,{$set:{'time':current_time}});
-    // }
-  };
+  // var timeupdateEvent = function () {
+  //   // console.log('timeupdate')
+  //   // check if seeked locally    
+  //   var prev_time = Session.get('prev_time')
+  //   var current_time = myPlayer.currentTime()
+  //   if (Math.abs(prev_time - current_time) > 1.0) {
+  //     // update database
+  //     console.log('seek')
+  //     console.log(Math.abs(prev_time - current_time))
+  //     console.log(prev_time)
+  //     console.log(current_time)
+  //     var room = Rooms.findOne({'room_id':Session.get('room_id')});
+  //     Rooms.update(room._id,{$set:{'time':current_time}});
+  //   }
+  //   Session.set('prev_time', current_time);
 
-  myPlayer.on("play", playEvent);
-  myPlayer.on("pause", pauseEvent);
-  myPlayer.on("timeupdate", timeupdateEvent);
+  // };
+
+   projekktor('player_a').addListener('state', function(data) { 
+      if (data == 'PAUSED') {
+          console.log('paused')
+      } else if (data == 'PLAYING') {
+          console.log('playing')
+      }
+    });
+
+  projekktor('player_a').addListener('seek', function(data) {
+      if (data == 'SEEKED') {
+          console.log(projekktor('player_a').getPosition())
+      }
+  });
+
+  // myPlayer.on("play", playEvent);
+  // myPlayer.on("pause", pauseEvent);
+  // myPlayer.on("timeupdate", timeupdateEvent);
 
   Deps.autorun(function() {
     console.log('aaaa')
     var room = Rooms.findOne({'room_id':Session.get('room_id')});
     if (room) {
-      if (myPlayer.paused() && !room.paused) {
-        console.log('sync played')
-        myPlayer.play();
-        console.log('sync played')
-      } else if (!myPlayer.paused() && room.paused) {
-        console.log('sync paused')
-        myPlayer.pause();
-        console.log('sync paused')
-      }
+      // play/pause syncing
+      // if (myPlayer.paused() && !room.paused) {
+      //   console.log('sync played')
+      //   myPlayer.play();
+      //   console.log('sync played')
+      // } else if (!myPlayer.paused() && room.paused) {
+      //   console.log('sync paused')
+      //   myPlayer.pause();
+      //   console.log('sync paused')
+      // }
+
+      // time syncing
+      // if (last_sync_time != room['time']) {
+      //   myPlayer.currentTime(room['time']);
+      // }
+
     }
   });
 }
