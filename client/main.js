@@ -122,7 +122,14 @@ Template.video.rendered = function() {
 
   function seekEvent(data) {
     if (data == 'SEEKED') {
-      console.log(player.getPosition())
+      console.log('seeked')
+
+      var room = Rooms.findOne({'room_id':Session.get('room_id')});
+      var current_time = player.getPosition();
+
+      Rooms.update(room._id,{$set:{'time':current_time}});
+
+      last_sync_time = current_time;
     }
   }
 
@@ -144,9 +151,10 @@ Template.video.rendered = function() {
       }
 
       // time syncing
-      // if (last_sync_time != room['time']) {
-      //   myPlayer.currentTime(room['time']);
-      // }
+      if (last_sync_time != room['time']) {
+        player.setPlayhead(room['time']);
+        console.log('sync seeked to ' + room['time']);
+      }
 
     }
   });
